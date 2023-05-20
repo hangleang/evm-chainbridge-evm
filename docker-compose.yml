@@ -45,6 +45,7 @@ services:
 
   alice_relayer:
     image: chainsafe/chainbridge:v1.1.5
+    restart: always
     container_name: alice_relayer
     depends_on:
       setup_onchain:
@@ -59,6 +60,7 @@ services:
 
   bob_relayer:
     image: chainsafe/chainbridge:v1.1.5
+    restart: always
     container_name: bob_relayer
     depends_on:
       setup_onchain:
@@ -73,6 +75,7 @@ services:
 
   charlie_relayer:
     image: chainsafe/chainbridge:v1.1.5
+    restart: always
     container_name: charlie_relayer
     depends_on:
       setup_onchain:
