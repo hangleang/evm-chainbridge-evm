@@ -11,10 +11,6 @@ services:
     volumes:
       - ./geth-root/genesis.json:/root/genesis.json:ro
       - ./geth-root/entrypoint.sh:/root/entrypoint.sh:ro
-    command:
-      - --http.vhosts=*
-    networks:
-      - default
 
   geth2:
     image: "chainsafe/chainbridge-geth:20200505131100-5586a65"
@@ -24,10 +20,6 @@ services:
     volumes:
       - ./geth-root/genesis.json:/root/genesis.json:ro
       - ./geth-root/entrypoint.sh:/root/entrypoint.sh:ro
-    command:
-      - --http.vhosts=*
-    networks:
-      - default
 
   setup_onchain:
     image: phalanetwork/chainbridge-deploy
@@ -40,8 +32,6 @@ services:
     volumes:
       - ./on_chain_setup.sh:/usr/local/bin/startscript.sh:ro
     command: /bin/sh -c "/usr/local/bin/startscript.sh"
-    networks:
-      - default
 
   alice_relayer:
     image: chainsafe/chainbridge:v1.1.5
@@ -55,8 +45,6 @@ services:
     command:
       - --testkey=alice
       - --latest
-    networks:
-      - default
 
   bob_relayer:
     image: chainsafe/chainbridge:v1.1.5
@@ -70,8 +58,6 @@ services:
     command:
       - --testkey=bob
       - --latest
-    networks:
-      - default
 
   charlie_relayer:
     image: chainsafe/chainbridge:v1.1.5
@@ -85,5 +71,3 @@ services:
     command:
       - --testkey=charlie
       - --latest
-    networks:
-      - default
